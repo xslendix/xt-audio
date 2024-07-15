@@ -42,8 +42,9 @@ V add clang build script to do the actual build
 V build with visibility=hidden and visibility-inlines=hidden
 V make skeleton implementation
 V hunt down SystemALSA and friends especially in java/net
+V make sure we can run "list all devices" driver on win/lin
 
-* make sure we can run "list all devices" driver on win/lin => works on win
+* what the ? is a xt.sample.exe doing in the Linux /dist folder?
 * make a PR for set-up-the-basics
 * make it build on mac
 * add xcode build script just to generate the project files?
