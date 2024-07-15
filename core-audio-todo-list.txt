@@ -2,6 +2,8 @@
 
 * i vote we don't do x86 support. That begs the question, should it be dropped for the other backends as well. Thoughts?
 
+I think it should stay, don't think it would affect the project much or at all. From what I can see, only ASIO is dependant on some asmjit stuff (great library btw). Since ASIO should be disabled when building macOS support I don't see the issue.
+
 - a random list of might-be-interesting:
 
 * Should we ask the initial issue submitter for MacOS support (notshriram) to help out testing?
@@ -11,13 +13,13 @@
 
 - figure out stuff that will impact the implementation:
 
-* can we do direct-to-hw-access?
-* can we do software-mixed access?
+* can we do direct-to-hw-access? Due to the restrictive nature of macOS, I do not believe this is possible. There is HAL though.
+* can we do software-mixed access? Probably.
 * can we do loopback-recording?
-* can we do (non)interleaved or both?
-* can we do channelmapping?
-* can we do accurate time-and-position reporting?
-* which of XtDeviceCaps and XtServiceCaps are supported by CoreAudio? and which of those do we want to support?
+* can we do (non)interleaved or both? Both are possible with kAudioFormatFlagIsNonInterleaved and kLinearPCMFormatFlagIsNonInterleaved.
+* can we do channelmapping? Should be possible with AUGraph and AudioUnit
+* can we do accurate time-and-position reporting? Should be
+* which of XtDeviceCaps and XtServiceCaps are supported by CoreAudio? and which of those do we want to support? Whatever is required to get audio working, worry about other things later.
 
 - actually implement it, wrote some guidelines below, ideally these are possible but not a hard requirement:
 
