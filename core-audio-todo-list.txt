@@ -4,6 +4,7 @@
 
 - a random list of might-be-interesting:
 
+* Should we ask the initial issue submitter for MacOS support (notshriram) to help out testing?
 * PortAudio's core-audio backend: https://github.com/EddieRingle/portaudio/blob/master/src/hostapi/coreaudio/pa_mac_core.c#L1147
 * CAStreamBasicDescription (ancient): https://stackoverflow.com/questions/4033905/what-is-the-difference-between-castreambasicdescription-and-audiostreambasicdesc
 * do we need to worry about endianness? for x64? for arm?
@@ -27,6 +28,7 @@
 
 - all the other boring stuff:
 
+* make a PR for set-up-the-basics
 * update the version number
 * update the documentation
 * update the GitHub readme
