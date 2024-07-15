@@ -21,7 +21,10 @@ else ()
 endif ()
 
 # Make sure we don't export unwanted stuff.
-if (UNIX)
+if (APPLE)
+  add_compile_options(-fvisibility=hidden -fvisibility-inlines-hidden)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden -fvisibility-inlines-hidden")
+elseif (UNIX AND NOT APPLE)
   add_compile_options(-Wl,--no-undefined -fvisibility=hidden -fvisibility-inlines-hidden)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wl,--no-undefined -fvisibility=hidden -fvisibility-inlines-hidden")
 endif()

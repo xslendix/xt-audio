@@ -10,6 +10,7 @@
 #elif __linux__
 #define XT_CALL
 #elif __APPLE__
+#define XT_CALL
 // TODO I think we can leave this empty like linux, but keep the TODO here for now in case weird stuff starts happening
 #else
 #error "Unsupported platform."
