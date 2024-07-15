@@ -39,8 +39,10 @@
 * add xcode build script just to generate the project files
 * add clang build script to do the actual build
 * add test script to run the native console-based driver
-* fix up the java-to-native bindings
-* fix up the netcore-to-native bindings
+* fix up the java-to-native bindings library loading
+* fix up the netcore-to-native bindings library loading
+* bundle up the the dylib with the nuget package
+* bundle up the dylib in the jar file
 * figure out the calling convention, if any
 * figure out the export/visibility magic (dllexport/attribute-visibility-default)
 * re-check all #if _WIN32 and explicitly make sure it fails to compile if we are not 1) win or 2) lin or 3) mac => no implicit assumptions
