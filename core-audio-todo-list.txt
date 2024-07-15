@@ -34,6 +34,7 @@ V re-check all WIN32 in the cmake files and make it explicit, too
 V figure out the calling convention, if any
 V figure out the export/visibility magic (dllexport/attribute-visibility-default)
 
+* dont forget to mention realtime-waits-for-nothing
 * make a PR for set-up-the-basics
 * update the documentation
 * update the GitHub readme
