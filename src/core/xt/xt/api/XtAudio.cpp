@@ -8,7 +8,7 @@
 
 XtVersion XT_CALL
 XtAudioGetVersion(void) 
-{ return { 2, 2 }; }
+{ return { 2, 3 }; }
 char const* XT_CALL
 XtAudioGetLastAssert(void)
 { return XtiGetLastAssert(); }

@@ -18,11 +18,11 @@ mono ../dist/net/sample/Release/net48/Xt.Sample.exe $1
 echo $'\n'
 
 echo "Java debug..."
-java -jar ../dist/java/sample/debug/target/xt.sample.debug-2.2.jar $1
+java -jar ../dist/java/sample/debug/target/xt.sample.debug-2.3.jar $1
 echo $'\n'
 
 echo "Java release..."
-java -jar ../dist/java/sample/release/target/xt.sample-2.2.jar $1
+java -jar ../dist/java/sample/release/target/xt.sample-2.3.jar $1
 echo $'\n'
 
 echo "NetCore debug..."

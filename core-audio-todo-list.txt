@@ -28,8 +28,8 @@
 
 - all the other boring stuff:
 
+V update the version number
 * make a PR for set-up-the-basics
-* update the version number
 * update the documentation
 * update the GitHub readme
 * update the GH.io website
