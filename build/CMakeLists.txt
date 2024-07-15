@@ -6,16 +6,25 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Assumes MSVC.
 if (WIN32)
   message (STATUS "Building for Windows.")
+# Assumes CLang.
 elseif (APPLE)
   message (STATUS "Building for MacOS.")
 elseif (UNIX AND NOT APPLE)
+# Assumes GCC.
 # Really Linux, because ALSA.
   message (STATUS "Building for Linux.")
 else ()
   message (FATAL_ERROR "Unsupported platform.")
 endif ()
+
+# Make sure we don't export unwanted stuff.
+if (UNIX)
+  add_compile_options(-Wl,--no-undefined -fvisibility=hidden -fvisibility-inlines-hidden)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wl,--no-undefined -fvisibility=hidden -fvisibility-inlines-hidden")
+endif()
 
 # Static link runtime libs.
 if (WIN32)

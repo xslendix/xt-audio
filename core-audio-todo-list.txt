@@ -37,6 +37,7 @@ V figure out the export/visibility magic (dllexport/attribute-visibility-default
 V introduce XT_ENABLE_CORE_AUDIO build switch and wire it up everywhere
 V hunt down all occurrences of XT_ENABLE_XYZ
 V add clang build script to do the actual build
+V build with visibility=hidden and visibility-inlines=hidden
 
 * make sure we can run "list all devices" driver on win/lin
 * dont forget to mention realtime-waits-for-nothing
@@ -45,7 +46,6 @@ V add clang build script to do the actual build
 * make it build on mac
 * add xcode build script just to generate the project files?
 * build the skeleton on Win, Lin, and Mac
-* build with visibility=hidden and visibility-inlines=hidden
 
 -- testing and java/net:
 * add test script to run the native console-based driver
