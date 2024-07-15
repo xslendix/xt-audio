@@ -41,8 +41,8 @@ V hunt down all occurrences of XT_ENABLE_XYZ
 V add clang build script to do the actual build
 V build with visibility=hidden and visibility-inlines=hidden
 V make skeleton implementation
+V hunt down SystemALSA and friends especially in java/net
 
-* hunt down SystemALSA and friends especially in java/net
 * make sure we can run "list all devices" driver on win/lin
 * make a PR for set-up-the-basics
 * make it build on mac

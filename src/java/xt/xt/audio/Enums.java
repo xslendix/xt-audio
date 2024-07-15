@@ -5,7 +5,7 @@ public interface Enums {
     public enum XtSample { UINT8, INT16, INT24, INT32, FLOAT32 }
     public enum XtSetup { PRO_AUDIO, SYSTEM_AUDIO, CONSUMER_AUDIO }
     public enum XtCause { FORMAT, SERVICE, GENERIC, UNKNOWN, ENDPOINT }
-    public enum XtSystem { ALSA, ASIO, JACK, WASAPI, PULSE_AUDIO, DIRECT_SOUND }
+    public enum XtSystem { ALSA, ASIO, JACK, WASAPI, PULSE_AUDIO, DIRECT_SOUND, CORE_AUDIO }
 
     public enum XtEnumFlags {
         INPUT(0x1), OUTPUT(0x2), ALL(0x1|0x2);
