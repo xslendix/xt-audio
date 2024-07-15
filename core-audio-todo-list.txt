@@ -44,6 +44,7 @@ V make skeleton implementation
 V hunt down SystemALSA and friends especially in java/net
 V make sure we can run "list all devices" driver on win/lin
 
+* add dsstore and dist/macOS to the gitignore 
 * what the ? is a xt.sample.exe doing in the Linux /dist folder?
 * make a PR for set-up-the-basics
 * make it build on mac
