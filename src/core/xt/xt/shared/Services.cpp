@@ -53,3 +53,12 @@ XtServiceError
 XtiGetWasapiError(XtFault fault) 
 { XT_ASSERT(false); return XtServiceError(); }
 #endif // !XT_ENABLE_WASAPI
+
+#if !XT_ENABLE_CORE_AUDIO
+std::unique_ptr<XtService>
+XtiCreateCoreAudioService()
+{ return std::unique_ptr<XtService>(); }
+XtServiceError
+XtiGetCoreAudioError(XtFault fault)
+{ XT_ASSERT(false); return XtServiceError(); }
+#endif // !XT_ENABLE_CORE_AUDIO
