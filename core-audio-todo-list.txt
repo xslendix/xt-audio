@@ -46,3 +46,6 @@
 * figure out the calling convention, if any
 * figure out the export/visibility magic (dllexport/attribute-visibility-default)
 * re-check all #if _WIN32 and explicitly make sure it fails to compile if we are not 1) win or 2) lin or 3) mac => no implicit assumptions
+* re-check all WIN32 in the cmake files and make it explicit, too
+* introduce XT_ENABLE_COREAUDIO build switch and wire it up everywhere
+
