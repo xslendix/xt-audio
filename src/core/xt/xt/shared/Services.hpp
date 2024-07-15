@@ -39,4 +39,9 @@ XtiCreateDSoundService();
 XtServiceError
 XtiGetDSoundError(XtFault fault);
 
+std::unique_ptr<XtService>
+XtiCreateCoreAudioService();
+XtServiceError
+XtiGetCoreAudioError(XtFault fault);
+
 #endif // XT_SHARED_SERVICES_HPP

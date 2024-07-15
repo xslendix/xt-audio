@@ -4,8 +4,8 @@
 enum XtSetup { XtSetupProAudio, XtSetupSystemAudio, XtSetupConsumerAudio };
 enum XtSample { XtSampleUInt8, XtSampleInt16, XtSampleInt24, XtSampleInt32, XtSampleFloat32 };
 enum XtCause { XtCauseFormat, XtCauseService, XtCauseGeneric, XtCauseUnknown, XtCauseEndpoint };
-enum XtSystem { XtSystemALSA = 1, XtSystemASIO, XtSystemJACK, XtSystemWASAPI, XtSystemPulse, XtSystemDSound };
 enum XtEnumFlags { XtEnumFlagsInput = 0x1, XtEnumFlagsOutput = 0x2, XtEnumFlagsAll = XtEnumFlagsInput | XtEnumFlagsOutput };
+enum XtSystem { XtSystemALSA = 1, XtSystemASIO, XtSystemJACK, XtSystemWASAPI, XtSystemPulse, XtSystemDSound, XtSystemCoreAudio };
 enum XtDeviceCaps { XtDeviceCapsNone = 0x0, XtDeviceCapsInput = 0x1, XtDeviceCapsOutput = 0x2, XtDeviceCapsLoopback = 0x4, XtDeviceCapsHwDirect = 0x8 };
 enum XtServiceCaps {
   XtServiceCapsNone = 0x0, XtServiceCapsTime = 0x1, XtServiceCapsLatency = 0x2, XtServiceCapsFullDuplex = 0x4, 

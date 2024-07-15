@@ -22,6 +22,7 @@ XtPlatform::GetSystems(XtSystem* buffer, int32_t* size) const
   if(GetService(XtSystemPulse) != nullptr) systems.push_back(XtSystemPulse);
   if(GetService(XtSystemDSound) != nullptr) systems.push_back(XtSystemDSound);
   if(GetService(XtSystemWASAPI) != nullptr) systems.push_back(XtSystemWASAPI);
+  if(GetService(XtSystemCoreAudio) != nullptr) systems.push_back(XtSystemCoreAudio);
   auto count = static_cast<int32_t>(systems.size());
   if(buffer == nullptr) *size = count;
   else memcpy(buffer, systems.data(), std::min(*size, count)*sizeof(XtSystem));
