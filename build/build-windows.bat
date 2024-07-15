@@ -4,7 +4,7 @@ setLocal enableDelayedExpansion
 REM native binaries
 if not exist native\win32 (mkdir native\win32)
 cd native\win32
-cmake ..\.. -G"Visual Studio 17 2022" -A x64 -DXT_ENABLE_ALSA=0 -DXT_ENABLE_JACK=0 -DXT_ENABLE_PULSE=0 -DXT_ENABLE_DSOUND=%1 -DXT_ENABLE_WASAPI=%2 -DXT_ENABLE_ASIO=%3 -DXT_ASIOSDK_DIR=%4 -DXT_ASMJIT_DIR=%5
+cmake ..\.. -G"Visual Studio 17 2022" -A x64 -DXT_ENABLE_ALSA=0 -DXT_ENABLE_JACK=0 -DXT_ENABLE_PULSE=0 -DXT_ENABLE_CORE_AUDIO=0 -DXT_ENABLE_DSOUND=%1 -DXT_ENABLE_WASAPI=%2 -DXT_ENABLE_ASIO=%3 -DXT_ASIOSDK_DIR=%4 -DXT_ASMJIT_DIR=%5
 if !errorlevel! neq 0 exit /b !errorlevel!
 msbuild xt-audio.sln /p:Configuration=Debug
 if !errorlevel! neq 0 exit /b !errorlevel!
@@ -28,10 +28,10 @@ REM java
 cd java\xt
 call mvn install
 if !errorlevel! neq 0 exit /b !errorlevel!
-copy pom.xml ..\..\..\dist\java\xt\release\target\xt.audio-2.2.pom
+copy pom.xml ..\..\..\dist\java\xt\release\target\xt.audio-2.3.pom
 call mvn -f pom.debug.xml install
 if !errorlevel! neq 0 exit /b !errorlevel!
-copy pom.debug.xml ..\..\..\dist\java\xt\debug\target\xt.audio.debug-2.2.pom
+copy pom.debug.xml ..\..\..\dist\java\xt\debug\target\xt.audio.debug-2.3.pom
 cd ..\..
 cd java\sample
 call mvn install

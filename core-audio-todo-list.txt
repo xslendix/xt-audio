@@ -1,0 +1,67 @@
+- proposed design decisions:
+
+* i vote we don't do x86 support. That begs the question, should it be dropped for the other backends as well. Thoughts?
+
+I think it should stay, don't think it would affect the project much or at all. From what I can see, only ASIO is dependant on some asmjit stuff (great library btw). Since ASIO should be disabled when building macOS support I don't see the issue.
+
+- a random list of might-be-interesting:
+
+* Should we ask the initial issue submitter for MacOS support (notshriram) to help out testing?
+* PortAudio's core-audio backend: https://github.com/EddieRingle/portaudio/blob/master/src/hostapi/coreaudio/pa_mac_core.c#L1147
+* CAStreamBasicDescription (ancient): https://stackoverflow.com/questions/4033905/what-is-the-difference-between-castreambasicdescription-and-audiostreambasicdesc
+* do we need to worry about endianness? for x64? for arm?
+
+- figure out stuff that will impact the implementation:
+
+* can we do direct-to-hw-access? Due to the restrictive nature of macOS, I do not believe this is possible. There is HAL though.
+* can we do software-mixed access? Probably.
+* can we do loopback-recording?
+* can we do (non)interleaved or both? Both are possible with kAudioFormatFlagIsNonInterleaved and kLinearPCMFormatFlagIsNonInterleaved.
+* can we do channelmapping? Should be possible with AUGraph and AudioUnit
+* can we do accurate time-and-position reporting? Should be
+* which of XtDeviceCaps and XtServiceCaps are supported by CoreAudio? and which of those do we want to support? Whatever is required to get audio working, worry about other things later.
+
+- actually implement it, wrote some guidelines below, ideally these are possible but not a hard requirement:
+
+* Service API (entry point) => should be light weight, not "open" any devices, just query metadata
+* DeviceList API (device metadata) => also lightweight, not "open" any devices, this is meant to quickly produce a list of (stable across sessions!) device identifiers + names
+* Device API (format and buffer size support) => allowed to do more heavy lifting (e.g. query HW driver for format support)
+* Stream API => this is where it happens! But usually, Device::OpenStream is the most complicated to implement in any backend.
+
+- all the other boring stuff:
+
+-- basic-setup:
+V update the version number
+V re-check all #if _WIN32 and explicitly make sure it fails to compile if we are not 1) win or 2) lin or 3) mac => no implicit assumptions
+V re-check all WIN32 in the cmake files and make it explicit, too
+V figure out the calling convention, if any
+V figure out the export/visibility magic (dllexport/attribute-visibility-default)
+V introduce XT_ENABLE_CORE_AUDIO build switch and wire it up everywhere
+V hunt down all occurrences of XT_ENABLE_XYZ
+V add clang build script to do the actual build
+V build with visibility=hidden and visibility-inlines=hidden
+V make skeleton implementation
+V hunt down SystemALSA and friends especially in java/net
+V make sure we can run "list all devices" driver on win/lin
+
+* add dsstore and dist/macOS to the gitignore 
+* what the ? is a xt.sample.exe doing in the Linux /dist folder?
+* make a PR for set-up-the-basics
+* make it build on mac
+* add xcode build script just to generate the project files?
+* build the skeleton on Win, Lin, and Mac
+
+-- testing and java/net:
+* add test script to run the native console-based driver
+* fix up the java-to-native bindings library loading
+* fix up the netcore-to-native bindings library loading
+* bundle up the the dylib with the nuget package
+* bundle up the dylib in the jar file
+* check the TODOs in code and build scripts
+* Re-test everything => windows, Linux, and macos.
+
+-- when all is done:
+* update the documentation => really check library.dox and the readme and the website
+* update the GitHub readme
+* update the GH.io website
+* write up a credits document

@@ -8,7 +8,7 @@
 
 XtVersion XT_CALL
 XtAudioGetVersion(void) 
-{ return { 2, 2 }; }
+{ return { 2, 3 }; }
 char const* XT_CALL
 XtAudioGetLastAssert(void)
 { return XtiGetLastAssert(); }
@@ -73,5 +73,7 @@ XtAudioInit(char const* id, void* window)
   if(dsound) result->_services.emplace_back(std::move(dsound));
   auto wasapi = XtiCreateWasapiService();
   if(wasapi) result->_services.emplace_back(std::move(wasapi));
+  auto core_audio = XtiCreateCoreAudioService();
+  if(core_audio) result->_services.emplace_back(std::move(core_audio));
   return XtPlatform::instance = result.release();
 }

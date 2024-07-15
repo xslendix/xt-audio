@@ -14,7 +14,7 @@ XtPlatformGetService(XtPlatform const* p, XtSystem system)
 {
   XT_ASSERT_API(p != nullptr);
   XT_ASSERT_API(XtiCalledOnMainThread());
-  XT_ASSERT_API(XtSystemALSA <= system && system <= XtSystemDSound);
+  XT_ASSERT_API(XtSystemALSA <= system && system <= XtSystemCoreAudio);
   return p->GetService(system);
 }
 

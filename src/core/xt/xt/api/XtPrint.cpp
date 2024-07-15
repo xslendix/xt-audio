@@ -24,7 +24,7 @@ XtPrintCause(XtCause cause)
 char const* XT_CALL 
 XtPrintSystem(XtSystem system) 
 {
-  XT_ASSERT_API(XtSystemALSA <= system && system <= XtSystemDSound);
+  XT_ASSERT_API(XtSystemALSA <= system && system <= XtSystemCoreAudio);
   switch(system) 
   {
   case XtSystemALSA: return "ALSA";
@@ -33,6 +33,7 @@ XtPrintSystem(XtSystem system)
   case XtSystemWASAPI: return "WASAPI";
   case XtSystemPulse: return "PulseAudio";
   case XtSystemDSound: return "DirectSound";
+  case XtSystemCoreAudio: return "CoreAudio";
   default: XT_ASSERT(false); return nullptr;
   }
 }
