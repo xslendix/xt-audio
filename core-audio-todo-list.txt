@@ -1,0 +1,44 @@
+- proposed design decisions:
+
+* i vote we don't do x86 support. That begs the question, should it be dropped for the other backends as well. Thoughts?
+
+- a random list of might-be-interesting:
+
+* PortAudio's core-audio backend: https://github.com/EddieRingle/portaudio/blob/master/src/hostapi/coreaudio/pa_mac_core.c#L1147
+* CAStreamBasicDescription (ancient): https://stackoverflow.com/questions/4033905/what-is-the-difference-between-castreambasicdescription-and-audiostreambasicdesc
+* do we need to worry about endianness? for x64? for arm?
+
+- figure out stuff that will impact the implementation:
+
+* can we do direct-to-hw-access?
+* can we do software-mixed access?
+* can we do loopback-recording?
+* can we do (non)interleaved or both?
+* can we do channelmapping?
+* can we do accurate time-and-position reporting?
+* which of XtDeviceCaps and XtServiceCaps are supported by CoreAudio? and which of those do we want to support?
+
+- actually implement it, wrote some guidelines below, ideally these are possible but not a hard requirement:
+
+* Service API (entry point) => should be light weight, not "open" any devices, just query metadata
+* DeviceList API (device metadata) => also lightweight, not "open" any devices, this is meant to quickly produce a list of (stable across sessions!) device identifiers + names
+* Device API (format and buffer size support) => allowed to do more heavy lifting (e.g. query HW driver for format support)
+* Stream API => this is where it happens! But usually, Device::OpenStream is the most complicated to implement in any backend.
+
+- all the other boring stuff:
+
+* update the version number
+* update the documentation
+* update the GitHub readme
+* update the GH.io website
+* write up a credits document
+* make skeleton implementation
+* make it build on mac
+* add xcode build script just to generate the project files
+* add clang build script to do the actual build
+* add test script to run the native console-based driver
+* fix up the java-to-native bindings
+* fix up the netcore-to-native bindings
+* figure out the calling convention, if any
+* figure out the export/visibility magic (dllexport/attribute-visibility-default)
+* re-check all #if _WIN32 and explicitly make sure it fails to compile if we are not 1) win or 2) lin or 3) mac => no implicit assumptions
