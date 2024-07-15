@@ -44,7 +44,6 @@ V make skeleton implementation
 
 * hunt down SystemALSA and friends especially in java/net
 * make sure we can run "list all devices" driver on win/lin
-* dont forget to mention realtime-waits-for-nothing
 * make a PR for set-up-the-basics
 * make it build on mac
 * add xcode build script just to generate the project files?
