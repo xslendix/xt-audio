@@ -7,8 +7,12 @@
 
 #ifdef _WIN32
 #define XT_CALL __stdcall
-#else
+#elif __linux__
 #define XT_CALL
+#elif __APPLE__
+// TODO I think we can leave this empty like linux, but keep the TODO here for now in case weird stuff starts happening
+#else
+#error "Unsupported platform."
 #endif // _WIN32
 #define XT_CALLBACK XT_CALL
 
@@ -17,8 +21,13 @@
 #define XT_API
 #elif (defined _WIN32)
 #define XT_API __declspec(dllexport)
-#else
+#elif __linux__
 #define XT_API __attribute__((visibility("default")))
+#elif __APPLE__
+// TODO consolidate __apple__/__linux__ and also go with -fvisibility=hidden.
+#define XT_API __attribute__((visibility("default")))
+#else
+#error "Unsupported platform."
 #endif // XT_EXPORT
 /** @endcond */
 
