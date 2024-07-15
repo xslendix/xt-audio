@@ -28,31 +28,34 @@
 
 - all the other boring stuff:
 
+-- basic-setup:
 V update the version number
 V re-check all #if _WIN32 and explicitly make sure it fails to compile if we are not 1) win or 2) lin or 3) mac => no implicit assumptions
 V re-check all WIN32 in the cmake files and make it explicit, too
 V figure out the calling convention, if any
 V figure out the export/visibility magic (dllexport/attribute-visibility-default)
-
 * dont forget to mention realtime-waits-for-nothing
 * make a PR for set-up-the-basics
-* update the documentation
-* update the GitHub readme
-* update the GH.io website
-* write up a credits document
 * make skeleton implementation
 * make it build on mac
 * add xcode build script just to generate the project files
 * add clang build script to do the actual build
+* introduce XT_ENABLE_COREAUDIO build switch and wire it up everywhere
+* hunt down all occurrences of XT_ENABLE_XYZ
+* build the skeleton on Win, Lin, and Mac
+* build with visibility=hidden and visibility-inlines=hidden
+
+-- testing and java/net:
 * add test script to run the native console-based driver
 * fix up the java-to-native bindings library loading
 * fix up the netcore-to-native bindings library loading
 * bundle up the the dylib with the nuget package
 * bundle up the dylib in the jar file
-* introduce XT_ENABLE_COREAUDIO build switch and wire it up everywhere
 * check the TODOs in code and build scripts
-* hunt down all occurrences of XT_ENABLE_XYZ
-* build the skeleton on Win, Lin, and Mac
-* build with visibility=hidden and visibility-inlines=hidden
 * Re-test everything => windows, Linux, and macos.
 
+-- when all is done:
+* update the documentation
+* update the GitHub readme
+* update the GH.io website
+* write up a credits document
